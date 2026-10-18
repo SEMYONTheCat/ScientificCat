@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+*.spec
+
+# Виртуальные окружения
+.venv/
+venv/
+env/
+
+# Тесты и покрытие
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Логи и временные файлы
+*.log
+*.recover
+*.backup
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Сборка
+assets/katex/fonts/

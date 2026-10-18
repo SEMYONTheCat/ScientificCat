@@ -1,0 +1,9 @@
+# Dev dependencies — Scientific Cat v1.0 (см. ADR-0008)
+pytest>=8.0
+pytest-qt>=4.4
+ruff>=0.6
+mypy>=1.10
+lxml-stubs>=0.5
+hypothesis>=6.0
+pre-commit>=3.0
+pyinstaller>=6.0

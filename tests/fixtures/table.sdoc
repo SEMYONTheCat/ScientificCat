@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdoc:sdoc xmlns:sdoc="https://scientificcat.dev/sdoc/1.0"
+           version="1.0"
+           generator="ScientificCat/1.0"
+           created="2026-08-18T12:00:00Z"
+           modified="2026-08-18T12:00:00Z">
+  <sdoc:metadata>
+    <sdoc:title>Таблица</sdoc:title>
+    <sdoc:language>ru</sdoc:language>
+  </sdoc:metadata>
+  <sdoc:body>
+    <sdoc:table id="tbl01" cols="3" rows="2" align="center">
+      <sdoc:caption>Таблица 1 — Пример таблицы</sdoc:caption>
+      <sdoc:row>
+        <sdoc:cell colspan="1" rowspan="1" align="center"><sdoc:run text="Заголовок 1"/></sdoc:cell>
+        <sdoc:cell colspan="1" rowspan="1" align="center"><sdoc:run text="Заголовок 2"/></sdoc:cell>
+        <sdoc:cell colspan="1" rowspan="1" align="center"><sdoc:run text="Заголовок 3"/></sdoc:cell>
+      </sdoc:row>
+      <sdoc:row>
+        <sdoc:cell colspan="1" rowspan="1" align="center"><sdoc:run text="Ячейка"/></sdoc:cell>
+        <sdoc:cell colspan="1" rowspan="1" align="center"><sdoc:formula id="eq01" type="inline" latex="x^2"/></sdoc:cell>
+        <sdoc:cell colspan="1" rowspan="1" align="center"><sdoc:run text="Данные"/></sdoc:cell>
+      </sdoc:row>
+    </sdoc:table>
+  </sdoc:body>
+  <sdoc:named-objects>
+    <sdoc:object id="tbl01" type="table" label="таблица 1"/>
+  </sdoc:named-objects>
+</sdoc:sdoc>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdoc:sdoc xmlns:sdoc="https://scientificcat.dev/sdoc/1.0"
+           version="1.0"
+           generator="ScientificCat/1.0"
+           created="2026-08-18T12:00:00Z"
+           modified="2026-08-18T12:00:00Z">
+  <sdoc:metadata>
+    <sdoc:title>Библиография</sdoc:title>
+    <sdoc:language>ru</sdoc:language>
+  </sdoc:metadata>
+  <sdoc:body>
+    <sdoc:paragraph id="p01">
+      <sdoc:run text="Цитата Эйнштейна [1] и Бора [2]."/>
+    </sdoc:paragraph>
+  </sdoc:body>
+  <sdoc:bibliography style="GOST">
+    <sdoc:citation id="ref01" key="einstein1905" type="article">
+      <sdoc:title>О электродинамике движущихся тел</sdoc:title>
+      <sdoc:author>Эйнштейн А.</sdoc:author>
+      <sdoc:journal>Annalen der Physik</sdoc:journal>
+      <sdoc:year>1905</sdoc:year>
+      <sdoc:volume>322</sdoc:volume>
+      <sdoc:pages>891–921</sdoc:pages>
+    </sdoc:citation>
+    <sdoc:citation id="ref02" key="bohr1913" type="article">
+      <sdoc:title>On the Constitution of Atoms</sdoc:title>
+      <sdoc:author>Bohr N.</sdoc:author>
+      <sdoc:journal>Nature</sdoc:journal>
+      <sdoc:year>1913</sdoc:year>
+    </sdoc:citation>
+  </sdoc:bibliography>
+</sdoc:sdoc>

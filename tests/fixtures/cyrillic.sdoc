@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdoc:sdoc xmlns:sdoc="https://scientificcat.dev/sdoc/1.0"
+           version="1.0"
+           generator="ScientificCat/1.0"
+           created="2026-08-18T12:00:00Z"
+           modified="2026-08-18T12:00:00Z">
+  <sdoc:metadata>
+    <sdoc:title>Кириллический документ</sdoc:title>
+    <sdoc:author>Иван Петров</sdoc:author>
+    <sdoc:keywords>кириллица, научный, документ</sdoc:keywords>
+    <sdoc:language>ru</sdoc:language>
+  </sdoc:metadata>
+  <sdoc:body>
+    <sdoc:section id="sec01" number="1">
+      <sdoc:heading level="1" id="h01">Введение</sdoc:heading>
+      <sdoc:paragraph id="p01" align="justify">
+        <sdoc:run text="Это абзац с кириллицей: привет, мир!"/>
+      </sdoc:paragraph>
+      <sdoc:section id="sec02" number="1.1">
+        <sdoc:heading level="2" id="h02">Подраздел</sdoc:heading>
+        <sdoc:paragraph id="p02">
+          <sdoc:run text="Подраздел с кириллическим текстом и заголовками."/>
+        </sdoc:paragraph>
+      </sdoc:section>
+    </sdoc:section>
+  </sdoc:body>
+</sdoc:sdoc>

@@ -1,0 +1,13 @@
+/* Scientific Cat — тёмная тема */
+QMainWindow, QDialog { background-color: #1e2127; color: #e6e6e6; }
+QTextEdit, QPlainTextEdit { background-color: #16181d; color: #e6e6e6; border: 1px solid #3c4048; }
+QStatusBar { background-color: #2b2f36; color: #cccccc; }
+QMenuBar { background-color: #2b2f36; color: #e6e6e6; }
+QMenuBar::item:selected { background-color: #3c4048; }
+QToolBar { background-color: #2b2f36; border-bottom: 1px solid #3c4048; }
+QLabel#PaneTitle { background-color: #2b2f36; color: #b7bdc8; padding: 6px 10px; font-weight: 600; }
+QListWidget { background-color: #16181d; color: #e6e6e6; border: 0; }
+QListWidget::item { padding: 5px; }
+QPushButton { background-color: #2b2f36; color: #e6e6e6; border: 1px solid #3c4048; padding: 4px 10px; }
+QPushButton:hover { background-color: #3c4048; }
+QLineEdit { background-color: #16181d; color: #e6e6e6; border: 1px solid #3c4048; }

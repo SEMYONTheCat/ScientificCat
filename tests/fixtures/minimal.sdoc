@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdoc:sdoc xmlns:sdoc="https://scientificcat.dev/sdoc/1.0"
+           version="1.0"
+           generator="ScientificCat/1.0"
+           created="2026-08-18T12:00:00Z"
+           modified="2026-08-18T12:00:00Z">
+  <sdoc:metadata>
+    <sdoc:title>Минимальный документ</sdoc:title>
+    <sdoc:author>Автор</sdoc:author>
+    <sdoc:language>ru</sdoc:language>
+  </sdoc:metadata>
+  <sdoc:styles>
+    <sdoc:font name="Main" family="Arial" size="12" unit="pt"/>
+    <sdoc:style name="Body" font="Main" size="12" align="justify"/>
+    <sdoc:margin top="20mm" bottom="20mm" left="30mm" right="20mm"/>
+    <sdoc:line_spacing unit="pt">20</sdoc:line_spacing>
+  </sdoc:styles>
+  <sdoc:body>
+    <sdoc:paragraph id="p01" align="justify">
+      <sdoc:run text="Минимальный текст документа."/>
+    </sdoc:paragraph>
+  </sdoc:body>
+</sdoc:sdoc>

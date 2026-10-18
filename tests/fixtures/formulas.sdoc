@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdoc:sdoc xmlns:sdoc="https://scientificcat.dev/sdoc/1.0"
+           version="1.0"
+           generator="ScientificCat/1.0"
+           created="2026-08-18T12:00:00Z"
+           modified="2026-08-18T12:00:00Z">
+  <sdoc:metadata>
+    <sdoc:title>Формулы</sdoc:title>
+    <sdoc:language>ru</sdoc:language>
+  </sdoc:metadata>
+  <sdoc:body>
+    <sdoc:paragraph id="p01" align="justify">
+      <sdoc:run text="Формула Эйнштейна: "/>
+      <sdoc:formula id="eq01" type="inline" latex="E = mc^2" number="1"/>
+      <sdoc:run text=" и интеграл "/>
+      <sdoc:formula id="eq02" type="inline" latex="\int_0^\infty e^{-x} dx = 1" number="2"/>
+      <sdoc:run text="."/>
+    </sdoc:paragraph>
+    <sdoc:formula id="eq03" type="display" latex="\frac{a+b}{c-d}" number="3" centered="true"/>
+    <sdoc:paragraph id="p02">
+      <sdoc:run text="Греческие буквы: "/>
+      <sdoc:formula id="eq04" type="inline" latex="\alpha + \beta = \gamma"/>
+    </sdoc:paragraph>
+  </sdoc:body>
+  <sdoc:named-objects>
+    <sdoc:object id="eq01" type="equation" label="уравнение (1)"/>
+    <sdoc:object id="eq02" type="equation" label="уравнение (2)"/>
+    <sdoc:object id="eq03" type="equation" label="уравнение (3)"/>
+  </sdoc:named-objects>
+</sdoc:sdoc>

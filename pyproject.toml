@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scientific-cat"
+version = "1.0.0"
+description = "Профессиональный научный редактор (Scientific Cat)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "PySide6>=6.5",
+    "pylatexenc>=2.10",
+    "lxml>=4.9",
+    "python-docx>=0.8.11",
+    "mistletoe>=0.9",
+    "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-qt>=4.4",
+    "ruff>=0.6",
+    "mypy>=1.10",
+    "hypothesis>=6.0",
+    "pre-commit>=3.0",
+    "lxml-stubs>=0.5",
+    "pyinstaller>=6.0",
+]
+
+[tool.setuptools]
+packages = ["core", "ui", "services"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["."]
+# Спайки — exploratory POC-код, исключается из линта
+extend-exclude = ["spikes/"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "PL"]
+ignore = [
+    "PLR2004",  # магические числа (допустимы в конфигах/стилях)
+]
+
+[tool.mypy]
+# python_version = 3.12 — так как стабы numpy/matplotlib требуют Python 3.12
+# (PEP 695); совместимость с 3.10 по синтаксису гарантирует ruff
+# (target-version = "py310").
+python_version = "3.12"
+strict = true
+warn_unused_configs = true
+# pylatexenc не имеет стабов; lxml-стабы подключены (lxml-stubs)
+ignore_missing_imports = true
+# ui/ — GUI-слой; markdown — glue поверх нетипизированного mistletoe
+exclude = ["ui/", "core/markdown.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

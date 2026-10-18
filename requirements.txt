@@ -1,0 +1,12 @@
+# Runtime dependencies — Scientific Cat v1.0
+# См. TZ §5.2 и ADR-0003 (pylatexenc вместо sympy для валидации)
+PySide6>=6.5
+pylatexenc>=2.10
+lxml>=4.9
+python-docx>=0.8.11
+mistletoe>=0.9
+# WYSIWYG-рендер формул в редакторе и PNG-экспорт (ADR-0002)
+matplotlib>=3.7
+
+# Опционально: символьная проверка формул (НЕ используется для валидации)
+# sympy>=1.12

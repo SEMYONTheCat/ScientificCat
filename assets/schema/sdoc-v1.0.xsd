@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://scientificcat.dev/sdoc/1.0"
+           xmlns:sdoc="https://scientificcat.dev/sdoc/1.0"
+           elementFormDefault="qualified"
+           version="1.0">
+
+  <!--
+      Scientific Cat — схема формата .sdoc v1.0
+      Источник истины формата (см. ADR-0004, FS §2.4)
+  -->
+
+  <!-- ================= Общие простые типы ================= -->
+
+  <xs:simpleType name="SdocId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z][a-zA-Z0-9_\-.]{2,31}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="BibKey">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="128"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AlignType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="left"/>
+      <xs:enumeration value="center"/>
+      <xs:enumeration value="right"/>
+      <xs:enumeration value="justify"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="FormulaType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="inline"/>
+      <xs:enumeration value="display"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ListType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ordered"/>
+      <xs:enumeration value="unordered"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ObjectType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="equation"/>
+      <xs:enumeration value="table"/>
+      <xs:enumeration value="figure"/>
+      <xs:enumeration value="section"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="BibStyle">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GOST"/>
+      <xs:enumeration value="APA"/>
+      <xs:enumeration value="IEEE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="UnitType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pt"/>
+      <xs:enumeration value="mm"/>
+      <xs:enumeration value="cm"/>
+      <xs:enumeration value="in"/>
+      <xs:enumeration value="px"/>
+      <xs:enumeration value="em"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ================= Метаданные ================= -->
+
+  <xs:complexType name="MetadataType">
+    <xs:sequence>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+      <xs:element name="author" type="xs:string" minOccurs="0"/>
+      <xs:element name="keywords" type="xs:string" minOccurs="0"/>
+      <xs:element name="template" type="xs:string" minOccurs="0"/>
+      <xs:element name="language" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ================= Стили ================= -->
+
+  <xs:complexType name="FontType">
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="family" type="xs:string" use="required"/>
+    <xs:attribute name="size" type="xs:positiveInteger" use="required"/>
+    <xs:attribute name="unit" type="sdoc:UnitType" default="pt"/>
+  </xs:complexType>
+
+  <xs:complexType name="ParagraphStyleType">
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="font" type="xs:string" use="optional"/>
+    <xs:attribute name="size" type="xs:positiveInteger" use="optional"/>
+    <xs:attribute name="bold" type="xs:boolean" default="false"/>
+    <xs:attribute name="italic" type="xs:boolean" default="false"/>
+    <xs:attribute name="underline" type="xs:boolean" default="false"/>
+    <xs:attribute name="align" type="sdoc:AlignType" default="justify"/>
+  </xs:complexType>
+
+  <xs:complexType name="MarginType">
+    <xs:attribute name="top" type="xs:string" default="20mm"/>
+    <xs:attribute name="bottom" type="xs:string" default="20mm"/>
+    <xs:attribute name="left" type="xs:string" default="30mm"/>
+    <xs:attribute name="right" type="xs:string" default="20mm"/>
+  </xs:complexType>
+
+  <xs:complexType name="LineSpacingType" mixed="true">
+    <xs:attribute name="unit" type="sdoc:UnitType" default="pt"/>
+  </xs:complexType>
+
+  <xs:complexType name="StylesType">
+    <xs:sequence>
+      <xs:element name="font" type="sdoc:FontType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="style" type="sdoc:ParagraphStyleType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="margin" type="sdoc:MarginType" minOccurs="0"/>
+      <xs:element name="line_spacing" type="sdoc:LineSpacingType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ================= Содержимое (body) ================= -->
+
+  <xs:complexType name="RunType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="text" type="xs:string" use="optional"/>
+        <xs:attribute name="style" type="xs:string" use="optional"/>
+        <xs:attribute name="bold" type="xs:boolean" use="optional"/>
+        <xs:attribute name="italic" type="xs:boolean" use="optional"/>
+        <xs:attribute name="underline" type="xs:boolean" use="optional"/>
+        <xs:attribute name="subscript" type="xs:boolean" use="optional"/>
+        <xs:attribute name="superscript" type="xs:boolean" use="optional"/>
+        <xs:attribute name="reference" type="sdoc:SdocId" use="optional"/>
+        <xs:attribute name="citation-key" type="sdoc:BibKey" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="FormulaTypeElem">
+    <xs:attribute name="id" type="sdoc:SdocId" use="required"/>
+    <xs:attribute name="type" type="sdoc:FormulaType" default="inline"/>
+    <xs:attribute name="latex" type="xs:string" use="required"/>
+    <xs:attribute name="number" type="xs:nonNegativeInteger" use="optional"/>
+    <xs:attribute name="centered" type="xs:boolean" default="false"/>
+  </xs:complexType>
+
+  <!-- Параграф: последовательность run/formula -->
+  <xs:complexType name="ParagraphType" mixed="true">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:choice>
+        <xs:element name="run" type="sdoc:RunType"/>
+        <xs:element name="formula" type="sdoc:FormulaTypeElem"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="sdoc:SdocId" use="required"/>
+    <xs:attribute name="align" type="sdoc:AlignType" default="justify"/>
+  </xs:complexType>
+
+  <xs:complexType name="ItemType" mixed="true">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="run" type="sdoc:RunType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ListTypeElem">
+    <xs:sequence>
+      <xs:element name="item" type="sdoc:ItemType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="sdoc:SdocId" use="required"/>
+    <xs:attribute name="type" type="sdoc:ListType" default="unordered"/>
+  </xs:complexType>
+
+  <xs:complexType name="CellType" mixed="true">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:choice>
+        <xs:element name="run" type="sdoc:RunType"/>
+        <xs:element name="formula" type="sdoc:FormulaTypeElem"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="colspan" type="xs:positiveInteger" default="1"/>
+    <xs:attribute name="rowspan" type="xs:positiveInteger" default="1"/>
+    <xs:attribute name="align" type="sdoc:AlignType" default="center"/>
+  </xs:complexType>
+
+  <xs:complexType name="RowType">
+    <xs:sequence>
+      <xs:element name="cell" type="sdoc:CellType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TableType">
+    <xs:sequence>
+      <xs:element name="caption" type="xs:string" minOccurs="0"/>
+      <xs:element name="row" type="sdoc:RowType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="sdoc:SdocId" use="required"/>
+    <xs:attribute name="cols" type="xs:positiveInteger" use="required"/>
+    <xs:attribute name="rows" type="xs:positiveInteger" use="required"/>
+    <xs:attribute name="align" type="sdoc:AlignType" default="center"/>
+  </xs:complexType>
+
+  <xs:complexType name="HeadingType" mixed="true">
+    <xs:attribute name="level" type="xs:positiveInteger" use="required"/>
+    <xs:attribute name="id" type="sdoc:SdocId" use="optional"/>
+  </xs:complexType>
+
+  <!-- Секция: рекурсивная -->
+  <xs:complexType name="SectionType">
+    <xs:sequence>
+      <xs:element name="heading" type="sdoc:HeadingType" minOccurs="0"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="section" type="sdoc:SectionType"/>
+        <xs:element name="paragraph" type="sdoc:ParagraphType"/>
+        <xs:element name="formula" type="sdoc:FormulaTypeElem"/>
+        <xs:element name="list" type="sdoc:ListTypeElem"/>
+        <xs:element name="table" type="sdoc:TableType"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="sdoc:SdocId" use="required"/>
+    <xs:attribute name="number" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="BodyType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="section" type="sdoc:SectionType"/>
+      <xs:element name="paragraph" type="sdoc:ParagraphType"/>
+      <xs:element name="formula" type="sdoc:FormulaTypeElem"/>
+      <xs:element name="list" type="sdoc:ListTypeElem"/>
+      <xs:element name="table" type="sdoc:TableType"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <!-- ================= Библиография ================= -->
+
+  <xs:complexType name="CitationType">
+    <xs:sequence>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+      <xs:element name="author" type="xs:string" minOccurs="0"/>
+      <xs:element name="journal" type="xs:string" minOccurs="0"/>
+      <xs:element name="booktitle" type="xs:string" minOccurs="0"/>
+      <xs:element name="year" type="xs:string" minOccurs="0"/>
+      <xs:element name="volume" type="xs:string" minOccurs="0"/>
+      <xs:element name="number" type="xs:string" minOccurs="0"/>
+      <xs:element name="pages" type="xs:string" minOccurs="0"/>
+      <xs:element name="publisher" type="xs:string" minOccurs="0"/>
+      <xs:element name="address" type="xs:string" minOccurs="0"/>
+      <xs:element name="doi" type="xs:string" minOccurs="0"/>
+      <xs:element name="url" type="xs:anyURI" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="sdoc:SdocId" use="required"/>
+    <xs:attribute name="key" type="sdoc:BibKey" use="required"/>
+    <xs:attribute name="type" type="xs:string" default="article"/>
+  </xs:complexType>
+
+  <xs:complexType name="BibliographyType">
+    <xs:sequence>
+      <xs:element name="citation" type="sdoc:CitationType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="style" type="sdoc:BibStyle" default="GOST"/>
+  </xs:complexType>
+
+  <!-- ================= Именуемые объекты и ресурсы ================= -->
+
+  <xs:complexType name="NamedObjectType">
+    <xs:attribute name="id" type="sdoc:SdocId" use="required"/>
+    <xs:attribute name="type" type="sdoc:ObjectType" use="required"/>
+    <xs:attribute name="label" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="NamedObjectsType">
+    <xs:sequence>
+      <xs:element name="object" type="sdoc:NamedObjectType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ResourceType" mixed="true">
+    <xs:attribute name="id" type="sdoc:SdocId" use="required"/>
+    <xs:attribute name="type" type="xs:string" default="image"/>
+    <xs:attribute name="format" type="xs:string" default="png"/>
+  </xs:complexType>
+
+  <xs:complexType name="ResourcesType">
+    <xs:sequence>
+      <xs:element name="resource" type="sdoc:ResourceType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ================= Корень документа ================= -->
+
+  <xs:element name="sdoc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="metadata" type="sdoc:MetadataType" minOccurs="0"/>
+        <xs:element name="styles" type="sdoc:StylesType" minOccurs="0"/>
+        <xs:element name="body" type="sdoc:BodyType" minOccurs="0"/>
+        <xs:element name="bibliography" type="sdoc:BibliographyType" minOccurs="0"/>
+        <xs:element name="named-objects" type="sdoc:NamedObjectsType" minOccurs="0"/>
+        <xs:element name="resources" type="sdoc:ResourcesType" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string" use="required"/>
+      <xs:attribute name="generator" type="xs:string" use="optional"/>
+      <xs:attribute name="created" type="xs:dateTime" use="optional"/>
+      <xs:attribute name="modified" type="xs:dateTime" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

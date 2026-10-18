@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdoc:sdoc xmlns:sdoc="https://scientificcat.dev/sdoc/1.0" version="1.0"
+           generator="ScientificCat/1.0" created="2026-08-19T00:00:00Z"
+           modified="2026-08-19T00:00:00Z">
+  <sdoc:metadata>
+    <sdoc:title>Тема диссертации</sdoc:title>
+    <sdoc:author>Автор</sdoc:author>
+    <sdoc:template>thesis</sdoc:template>
+    <sdoc:language>ru</sdoc:language>
+  </sdoc:metadata>
+  <sdoc:styles>
+    <sdoc:font name="Main" family="Times New Roman" size="14" unit="pt"/>
+    <sdoc:style name="Body" font="Main" size="14" align="justify"/>
+    <sdoc:margin top="20mm" bottom="20mm" left="30mm" right="15mm"/>
+  </sdoc:styles>
+  <sdoc:body>
+    <sdoc:section id="sec01" number="1">
+      <sdoc:heading level="1" id="h01">Введение</sdoc:heading>
+      <sdoc:paragraph id="p01">
+        <sdoc:run text="Введение к диссертации."/>
+      </sdoc:paragraph>
+    </sdoc:section>
+  </sdoc:body>
+</sdoc:sdoc>

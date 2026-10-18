@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<sdoc:sdoc xmlns:sdoc="https://scientificcat.dev/sdoc/1.0" version="1.0" generator="ScientificCat/1.0" created="2026-08-19T16:37:00Z" modified="2026-08-19T16:37:00Z">
+  <sdoc:metadata>
+    <sdoc:language>ru</sdoc:language>
+  </sdoc:metadata>
+  <sdoc:styles>
+    <sdoc:font name="Main" family="Arial" size="12" unit="pt"/>
+    <sdoc:font name="Formula" family="Computer Modern" size="14" unit="pt"/>
+    <sdoc:style name="Body" font="Main" size="12" bold="false" align="justify"/>
+    <sdoc:style name="Heading1" font="Main" size="16" bold="true" align="justify"/>
+    <sdoc:style name="Heading2" font="Main" size="14" bold="true" align="justify"/>
+    <sdoc:margin top="20mm" bottom="20mm" left="30mm" right="20mm"/>
+    <sdoc:line_spacing unit="pt">20.0</sdoc:line_spacing>
+  </sdoc:styles>
+  <sdoc:body>
+    <sdoc:paragraph id="p0001" align="left">
+      <sdoc:run text="Привет" style="Body" bold="true" italic="false" underline="false" subscript="false" superscript="false"/>
+      <sdoc:run text="! " style="Body" bold="false" italic="false" underline="false" subscript="false" superscript="false"/>
+      <sdoc:formula id="eq3cdefe" type="inline" latex="\alpha\alpha\alpha" number="1"/>
+    </sdoc:paragraph>
+    <sdoc:paragraph id="p0002" align="left">
+      <sdoc:run text="тест 1" style="Body" bold="false" italic="false" underline="false" subscript="false" superscript="false"/>
+    </sdoc:paragraph>
+    <sdoc:section id="sec0001" number="1">
+      <sdoc:heading level="1">тест2</sdoc:heading>
+    </sdoc:section>
+  </sdoc:body>
+  <sdoc:bibliography style="GOST"/>
+  <sdoc:named-objects>
+    <sdoc:object id="eq3cdefe" type="equation" label="1"/>
+  </sdoc:named-objects>
+  <sdoc:resources/>
+</sdoc:sdoc>

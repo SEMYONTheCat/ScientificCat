@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdoc:sdoc xmlns:sdoc="https://scientificcat.dev/sdoc/1.0"
+           version="1.0"
+           generator="ScientificCat/1.0"
+           created="2026-08-18T12:00:00Z"
+           modified="2026-08-18T12:00:00Z">
+  <sdoc:metadata>
+    <sdoc:title>Ресурсы</sdoc:title>
+    <sdoc:language>ru</sdoc:language>
+  </sdoc:metadata>
+  <sdoc:body>
+    <sdoc:paragraph id="p01">
+      <sdoc:run text="Документ с вложенным ресурсом (изображение)."/>
+    </sdoc:paragraph>
+  </sdoc:body>
+  <sdoc:resources>
+    <sdoc:resource id="img01" type="image" format="png">iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=</sdoc:resource>
+  </sdoc:resources>
+</sdoc:sdoc>
